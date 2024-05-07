@@ -1,0 +1,70 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff; /* Bright white background to mimic the trooper armor */
+    color: #333; /* Dark text for contrast */
+}
+
+label {
+    margin-right: 10px;
+    color: #FF8C00; /* Vibrant orange for labels, reflecting the 212nd's markings */
+}
+
+input {
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #FF8C00; /* Orange border for inputs */
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="number"] {
+    color: #333; /* Dark color for text for readability */
+    background-color: #f4f4f4; /* Light grey background to soften the stark white */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #FF8C00; /* Orange background for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #e07c00; /* Darker orange on hover for interactivity */
+}
+
+#results h2 {
+    color: #333; /* Keep result text dark for visibility against the light background */
+    border-top: 3px solid #FF8C00; /* Orange top border for results section */
+    padding-top: 10px; /* Spacing for aesthetic separation from the border */
+}
+
+table {
+    width: 100%; /* Full-width table for the amortization schedule */
+    border-collapse: collapse; /* Remove space between borders */
+}
+
+th, td {
+    border: 1px solid #FF8C00; /* Orange borders for table cells */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #FFF5EE; /* Slight off-white background for headers */
+}
+
+/* Add additional styles for table to enhance legibility and theming */
+table tr:nth-child(even) {
+    background-color: #f4f4f4; /* Light grey for even rows */
+}
+
+table tr:hover {
+    background-color: #FFF8DC; /* Light orange/cream on hover for rows */
+}
