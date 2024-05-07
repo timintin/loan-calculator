@@ -4,11 +4,15 @@ document.getElementById('loan-form').addEventListener('submit', function(e) {
     const years = parseFloat(document.getElementById('loan-years').value);
     const rate = parseFloat(document.getElementById('loan-rate').value);
 
-    const monthlyPayment = calculateMonthlyPayment({ amount, years, rate });
-    document.getElementById('monthly-payment').innerText = `$${monthlyPayment}`;
-
-    const schedule = calculateAmortization({ amount, years, rate });
-    displayAmortization(schedule);
+    const errors = validateInputs(amount, years, rate);
+    if (Object.keys(errors).length === 0) {
+        const monthlyPayment = calculateMonthlyPayment({ amount, years, rate });
+        document.getElementById('monthly-payment').innerText = `$${monthlyPayment}`;
+        const schedule = calculateAmortization({ amount, years, rate });
+        displayAmortization(schedule);
+    } else {
+        displayErrors(errors); // Implement this to show errors on the UI
+    }
 });
 
 function calculateMonthlyPayment({ amount, years, rate }) {
@@ -50,4 +54,29 @@ function displayAmortization(schedule) {
         balanceCell.textContent = item.balance;
     });
     container.appendChild(table);
+}
+
+function validateInputs(amount, years, rate) {
+    let errors = {};
+    if (isNaN(amount) || amount <= 0) {
+        errors.amount = 'Invalid loan amount. Please enter a positive number.';
+    }
+    if (isNaN(years) || years <= 0) {
+        errors.years = 'Invalid loan term. Please enter a positive number.';
+    }
+    if (isNaN(rate) || rate < 0) {
+        errors.rate = 'Invalid interest rate. Please enter a non-negative number.';
+    }
+    return errors;
+}
+
+function displayErrors(errors) {
+    const errorDiv = document.getElementById('errorMessages');
+    errorDiv.innerHTML = ''; // Clear previous errors
+    Object.values(errors).forEach(error => {
+        const p = document.createElement('p');
+        p.textContent = error;
+        p.style.color = 'red';
+        errorDiv.appendChild(p);
+    });
 }
